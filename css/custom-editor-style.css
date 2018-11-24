@@ -1,0 +1,14 @@
+﻿/*
+ * Custom-Editor-Style
+*/
+
+/** ===================================
+  Bilder in Links eingebettet werden im TinyMCE-Editor inline dargestellt
+  ==================================== **/
+
+
+body#tinymce.wp-editor a img {
+  display: inline-block;
+  margin: 8px;
+  margin: 0.5rem;
+}

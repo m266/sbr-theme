@@ -1,0 +1,1705 @@
+﻿/*
+Theme Name:         SBR
+Plugin URI:         https://github.com/m266/sbr-theme
+Description:        SBR-Theme für Websites der SBR-Gremien Post Postbank Telekom
+Author:             Hans M. Herbrand
+Author URI:         https://www.web266.de
+Template:           twentysixteen
+Version:            2.0.0
+License:            GNU General Public License v2 or later
+License URI:        http://www.gnu.org/licenses/gpl-2.0.html
+Tags:               two-columns, left-sidebar, accessibility-ready
+Text Domain:        twentysixteen
+Credits:            Florian Tress, http://tress-webdesign.de
+GitHub Plugin URI:  https://github.com/m266/sbr-theme
+*/
+
+/** Inhalt **
+ * Fonts / Typografie
+ * Farben
+ * Layout
+ * Header + Logo + Logo mobile
+ * Sidebar
+ ** Widget allgemein
+ ** Widget Kalender
+ ** Suchen Widget
+ ** Widget eigenes Menu
+ ** Widget Newsletter
+ ** Widget Netgo-Navigation
+ * Contentbereich
+ ** Bildrundungen
+ ** Beitrag / News
+ ** Navigationsrahmen unterhalb eines einzelnen Artikels
+ ** Kommentare
+ ** Seniorenbeirat
+ ** Sitemap
+ ** Suchenseite
+ ** Home
+ ** Kompatibilitaet von inline eingefuegten Bildern bestehender Webseiten
+ * Footer der Seite
+ ** Sidebar ausblenden
+ */
+
+
+/** =======================================
+    Fonts / Typografie 
+    ======================================= **/
+
+
+body, button, input, select, p {
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.6;
+}
+
+p {
+  margin: 0 0 24px;
+  margin: 0 0 1.5rem;
+}
+
+.site-title,
+.site-description {
+  font-family: 'Merriweather Sans', Arial, sans-serif;
+  font-size: 18px;
+  font-size: 1.125rem;
+  max-width: 185px;
+  max-width: 11.563rem;
+  font-weight: 700;
+  line-height: 1.2918;
+}
+
+@media only screen and (min-width: 55rem) { /* 880px */
+  .site-title,
+  .site-description {
+    font-size: 20px;
+    font-size: 1.25rem;
+  }
+}
+
+@media only screen and (min-width: 61.5625rem) { /* 985px */
+  .site-title,
+  .site-description {
+    font-size: 22px;
+    font-size: 1.375rem;
+  }
+}
+
+@media only screen and (min-width: 68.750rem) { /* 1100px */
+  .site-title,
+  .site-description {
+    font-size: 24px;
+    font-size: 1.5rem;
+  }
+}
+
+.entry-title,
+.entry-footer,
+.pagination,
+.comment-navigation,
+.comments-title,
+.comment-metadata a,
+.comment-reply-link,
+.comment-reply-link:hover,
+.comment-reply-link:focus,
+.comment-form label,
+.comments-title, 
+.comment-reply-title,
+.page-title,
+.post-navigation,
+.post-navigation .post-title,
+.image-navigation,
+.tagcloud a,
+button, button[disabled]:hover,
+button[disabled]:focus,
+input[type="button"],
+input[type="button"][disabled]:hover,
+input[type="button"][disabled]:focus,
+input[type="reset"],
+input[type="reset"][disabled]:hover,
+input[type="reset"][disabled]:focus,
+input[type="submit"],
+input[type="submit"][disabled]:hover,
+input[type="submit"][disabled]:focus {
+  font-family: 'Merriweather Sans', Arial, sans-serif;
+}
+
+.site-description {
+  font-weight: 400;
+  max-width: 448px;
+  max-width: 28rem;
+  margin-top: 10px;
+  margin-top: 0.625rem;
+}
+
+@media only screen and (min-width: 55rem) { /* 880px */
+  .site-description {
+    margin-top: 12px;
+    margin-top: 0.75rem;
+  }
+}
+
+@media only screen and (min-width: 61.5625rem) { /* 985px */
+  .site-description {
+    margin-top: 17px;
+    margin-top: 1.063rem;
+  }
+}
+
+.entry-content ul { /* Pfeil vor Link zum Weiterlesen / Mehrerfahren bei Beitraege / News */
+  list-style-image: url(images/mehr-pfeil.png);
+  margin-left: 16px;
+  margin-left: 1rem;
+}
+
+.more-link:before { /* Pfeil vor Link zum Weiterlesen -> Dies ist fuer den WordPress-Standard-read-more-Link */
+  content: url(images/mehr-pfeil.png);
+  padding-right: 8px;
+  padding-right: 0.5rem;
+}
+
+/* Schriftgrößen */
+
+.entry-content h2, .entry-summary h2, .comment-content h2 {
+  font-size: 18px;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.entry-content h3, .entry-summary h3, .comment-content h3, .page-home-heading-news {
+  font-size: 16px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.entry-content h4, .entry-summary h4, .entry-intro h4, .comment-content h4 {
+  font-size: 16px;
+  font-size: 1rem;
+  letter-spacing: 0.131578947rem;
+  font-weight: 700;
+}
+
+@media screen and (min-width: 61.5625rem) { /* 985px */
+  .entry-content h2, .entry-summary h2, .comment-content h2 {
+    font-size: 23px;
+    font-size: 1.438rem;
+  }
+
+  .entry-content h3, .entry-summary h3, .comment-content h3, .page-home-heading-news {
+    font-size: 19px;
+    font-size: 1.188rem;
+  }
+
+  .entry-content h4, .entry-summary h4, .entry-intro h4, .comment-content h4 {
+    font-size: 19px;
+    font-size: 1.188rem;
+    letter-spacing: 0.131578947rem;
+  }
+}
+
+/* Schriftgrößen - Ende */
+
+/* Abstand Titelbild zum Text */
+.home .title-image-page-home {
+  margin: 6px 28px 28px 0 !important;
+  margin: 0.375rem 1.75rem 1.75rem 0 !important;
+}
+
+.home figure .title-image-page-home {
+  margin: 0 !important;
+}
+/* Abstand Titelbild zum Text -Ende */ 
+
+
+/** =======================================
+    Fonts / Typografie - Ende
+    ======================================= **/
+
+
+
+/** =======================================
+    Farben
+    ======================================= **/
+
+body {
+  background: #ffffff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #A1015B;
+}
+
+.site-branding .site-title a, .site-description a {
+  color: #A1015B;
+}
+
+a, .entry-title a {
+  color: #A1015B;
+}
+
+a:hover,
+a:focus,
+.entry-title a:hover,
+.entry-title a:focus {
+  color: #a1a1a1;
+}
+
+button,
+button[disabled]:hover,
+button[disabled]:focus,
+input[type="button"],
+input[type="button"][disabled]:hover,
+input[type="button"][disabled]:focus,
+input[type="reset"],
+input[type="reset"][disabled]:hover,
+input[type="reset"][disabled]:focus,
+input[type="submit"],
+input[type="submit"][disabled]:hover,
+input[type="submit"][disabled]:focus {
+    background-color: #A1015B;
+    border-radius: 0;
+}
+
+button:hover,
+button:focus,
+input[type="button"]:hover,
+input[type="button"]:focus,
+input[type="reset"]:hover,
+input[type="reset"]:focus,
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  background-color: #a1a1a1;
+}
+
+/** =======================================
+    Farben - Ende
+    ======================================= **/
+
+
+
+/** =======================================
+    Layout 
+    ======================================= **/
+
+body:not(.search-results) article:not(.type-page) .entry-content { /* Korrektur von falscher Formatierung */
+  width: auto !important;
+  float: none;
+}
+
+.entry-header,
+.post-thumbnail,
+.entry-content,
+.entry-summary,
+.entry-footer,
+.comments-area,
+.image-navigation,
+.post-navigation,
+.page-header,
+.page-content,
+.content-bottom-widgets {
+  margin-left: 10px;
+  margin-left: 0.625rem;
+  margin-right: 10px;
+  margin-right: 0.625rem;
+}
+
+.sidebar {
+  padding-left: 10px;
+  padding-left: 0.625rem;
+  padding-right: 10px;
+  padding-right: 0.625rem;
+}
+
+@media screen and (min-width: 48rem) { /* 768px */
+  .site-content {
+    padding: 0 20px;
+    padding: 0 1.25rem;
+  }
+
+  .sidebar {
+    float: left;
+    margin-left: 0;
+    padding: 0;
+    width: 30.195%;
+  }
+
+  .content-area {
+    float: right;
+    margin-right: 0;
+    margin-left: -100%;
+    width: 65.342%;
+  }
+
+  .entry-header,
+  .post-thumbnail,
+  .entry-content,
+  .entry-summary,
+  .entry-footer,
+  .comments-area,
+  .image-navigation,
+  .post-navigation,
+  .page-header,
+  .page-content,
+  .content-bottom-widgets {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media screen and (min-width: 61.5625rem) { /* 985px */
+  .sidebar {
+    float: left;
+    margin-right: 69.8%;
+    margin-left: 0;
+  }
+
+  .content-area {
+    float: right;
+    margin-right: 0;
+    margin-left: -100%;
+    width: 65.342%;
+  }
+}
+
+@media screen and (min-width: 68.75rem) { /* 1100 */
+  .site-content {
+    padding: 0 8.99%;
+  }
+}
+
+.site { /* Aussenrand neutralisiert */
+  margin: 0;
+}
+
+.site-inner { /* Schatten um die Seite herum */ 
+  box-shadow: 0 0 6px 5px rgba(229,229,229,0.86);
+  max-width: 1280px;
+  max-width: 80rem;
+}
+
+.site-header { /* Header geht bis zum Rand der Seite */
+  padding: 0;
+}
+
+@media screen and (min-width: 44.375rem) {
+  body:not(.custom-background-image):before, body:not(.custom-background-image):after { /* verhindert, dass Header oben ueberdeckt wird */
+    height: 0;
+  }
+}
+
+.entry-footer { /* Blendet Metainformationen zu Blogartikeln aus */
+  display: none;
+}
+
+body:not(.search-results) article:not(.type-page) .entry-content { /* Da ausgeblendete Metainformationen zu Blogartikeln wird die Inhaltsspalte auf 100% gesetzt */
+  width: 100%;
+}
+
+
+
+
+/** =======================================
+    Layout - Ende 
+    ======================================= **/
+
+
+
+
+/** =======================================
+    Header + Logo + Logo mobile
+    ======================================= **/
+
+.mobile-button-zur-navi-wrapper {
+  padding: 16px 10px;
+  padding: 1rem 0.625rem;
+  border-bottom: 2px solid #1a1a1a;
+  border-bottom: 0.125rem solid #1a1a1a;
+  margin-bottom: 32px;
+  margin-bottom: 2rem;
+}
+
+.mobile-button-zur-navi-wrapper a {
+  display: inline-block;
+  color: #FFF;
+  background-color: #A1015B;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-size: 1rem;
+  padding: 0.84375em 0.875em 0.78125em;
+  letter-spacing: 0.047rem;
+}
+
+.mobile-button-zur-navi-wrapper a:hover {
+  background-color: #a1a1a1;
+}
+
+@media only screen and (min-width: 48rem) { /* 768px */
+  .mobile-button-zur-navi-wrapper {
+    display: none;
+  }
+}
+
+/* Logo mobile */
+.mobile-header-wrapper {
+  padding: 0 10px 10px 10px;
+  padding: 0 0.6235rem 0.6235rem 0.6235rem;
+  overflow: auto;
+  border-bottom: 2px solid #1a1a1a;
+  border-bottom: 0.125rem solid #1a1a1a;
+}
+
+.mobile-header-wrapper .site-branding {
+  float: none;
+}
+
+@media only screen and (min-width: 33.750rem) { /* 540px */
+  .mobile-header-wrapper .site-branding {
+    float: left;
+  }
+}
+
+.mobile-header-wrapper .site-description { /* Anschalten der Sitedescription fuer mobile */
+  display: block; 
+  max-width: 280px;
+  max-width: 17.5rem;
+}
+
+@media only screen and (min-width: 37.5rem) { /* 600px */
+  .mobile-header-wrapper .site-description { /* Anschalten der Sitedescription fuer mobile */
+    max-width: 340px;
+    max-width: 21.25rem;
+  }
+}
+
+.mobile-header-wrapper .bew-logo-mobile {
+  display: none;
+}
+
+.mobile-header-wrapper .bew-logo-mobile a:hover img,
+.mobile-header-wrapper .bew-logo-mobile a:focus img {
+  opacity: 0.5;
+}
+
+.mobile-header-wrapper .bew-logo-mobile img {
+  width: 180px;
+  width: 11.250rem;
+  float: none;
+  margin-top: 20px;
+  margin-top: 1.25rem;
+}
+
+@media only screen and (min-width: 33.750rem) { /* 540px */
+  .mobile-header-wrapper .bew-logo-mobile img {
+    width: 77%;
+    float: right;
+    margin-top: 20px;
+    margin-top: 1.25rem;
+  }
+
+  .mobile-header-wrapper .bew-logo-mobile {
+    float: right;
+    display: block;
+  }
+}
+
+.site-header-main .site-branding {
+  display: none;
+}
+
+@media only screen and (min-width: 48rem) { /* 768px */
+  .mobile-header-wrapper {
+    display: none;
+  }
+
+  .bew-logo-mobile {
+    display: none;
+  }
+}
+/* Logo mobile -Ende */
+
+.header-wrapper {
+  position: relative;
+  clear: both;
+}
+
+.header-wrapper:before{
+  content: "";
+  display: block;
+}
+
+.bew-logo { /* dieses Logo wird fuer mobile abgeschaltet */
+  display: none;
+}
+
+.bew-logo a:hover img,
+.bew-logo a:focus img {
+  opacity: 0.5;
+}
+
+@media only screen and (min-width: 48rem) { /* 768px */
+  .header-wrapper:before{
+    padding-top: 23.1%;
+  }
+
+  .site-header-main {
+    display: table;
+    height: 97%;
+  }
+
+  .site-header {
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 100% 100%, contain;
+    margin-bottom: 40px;
+    margin-bottom: 2.5rem;
+    position:  absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  .site-header-main .site-branding {
+    display: block;
+    padding: 0 20px 0 20px;
+    padding: 0 1.25rem 0 1.25rem;
+    margin: 0;
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .bew-logo {
+    float: right;
+    display: table;
+    height: 85%;
+  }
+
+  .bew-logo a {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .bew-logo a img {
+    width: 69%;
+    float: right;
+    padding: 0 20px 0 0;
+    padding: 0 1.25rem 0 0;
+  }
+}
+
+@media only screen and (min-width: 55rem) { /* 880px */
+  .bew-logo a img {
+    width: 77%;
+  }
+}
+
+@media only screen and (min-width: 61.5625rem) { /* 985px */
+  .header-wrapper:before{
+    padding-top: 24.454%;
+  }
+
+  .site-header {
+    margin-bottom: 53px;
+    margin-bottom: 3.313rem;
+  }
+
+  .bew-logo a img {
+    width: 85%;
+  }
+}
+
+@media only screen and (min-width: 68.750rem) { /* 1100px */
+  .site-header-main .site-branding {
+    padding: 0 40px 0 40px;
+    padding: 0 2.5rem 0 2.5rem;
+  }
+
+  .bew-logo a img {
+    padding: 0 40px 0 0;
+    padding: 0 2.5rem 0 0;
+    width: 100%;
+  }
+}
+
+
+
+.site-branding .site-title a:hover,
+.site-branding .site-title a:focus,
+.site-description a:hover,
+.site-description a:focus {
+  color: #a1a1a1;
+}
+
+
+
+
+/** =======================================
+    Header - Ende
+    ======================================= **/
+
+
+
+
+/** =======================================
+    Sidebar
+    ======================================= **/
+
+/* Widget allgemein */
+
+.widget {
+  border: 1px solid #C2C6D2;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 0.313rem 0.313rem 0.313rem 0.313rem;
+  border-radius: 0.313rem 0.313rem 0.313rem 0.313rem;
+  font-size: 1rem;
+  padding-top: 0;
+  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
+}
+
+.widget .widget-title {
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  line-height: 1;
+  min-height: 47px;
+  min-height: 2.938rem;
+  padding: 16px 16px 15px 16px;
+  padding: 1rem 1rem 0.9375rem 1.25rem;
+  background-color: #A1015B;
+  color: #FFF;
+  text-transform: none;
+  -webkit-border-radius: 5px 5px 0 0; /* Obere Ecken des Widgettitels abgerundet */
+  border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 0.313rem 0.313rem 0 0;
+  border-radius: 0.313rem 0.313rem 0 0;
+  box-shadow: 0 3px 6px 0 #BBB; /* Kleiner Schatten unter dem Widgettitel */
+  box-shadow: 0 0.188rem 0.375rem 0 #BBB;
+  margin-bottom: 0;
+}
+
+.widget ul,
+.widget_wysija_cont {
+  padding: 20px;
+  padding: 1.25rem;
+}
+
+/* Widget allgemein - Ende */
+
+
+
+/* Widget Kalender */
+
+.calendar_wrap {
+  padding: 20px;
+  padding: 1.25rem;
+}
+
+.widget_calendar tbody a {
+  background-color: #A1015B;
+}
+
+/* Widget Kalender - Ende */
+
+
+
+/* Suchen Widget */
+
+.widget_search form {
+  padding: 20px 0 20px 20px;
+  padding: 1.25rem 0 1.25rem 1.25rem;
+}
+
+.widget_search form button.search-submit {
+  margin: 20px 20px 20px 0;
+  margin: 1.25rem 1.25rem 1.25rem 0;
+  width: 47px;
+  width: 2.938rem;
+  background-color: #A1015B;
+  border-radius: 0;
+  padding: 0;
+}
+
+.widget .search-submit:hover,
+.widget .search-submit:focus {
+  background-color: #a1a1a1;
+}
+
+.widget .search-submit:before {
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 2px;
+  line-height: 45px;
+}
+
+.widget input[type="search"].search-field {
+  height: 47px;
+  height: 2.938rem;
+  padding-left: 20px;
+  padding-left: 1.25rem;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+
+
+.widget input[type="search"].search-field::-webkit-input-placeholder,
+input[type="search"].search-field::-webkit-input-placeholder {
+   color: #535353;
+   font-family: Arial, "Helvetica Neue", sans-serif;
+   font-size: 14px;
+   font-size: 0.875rem;
+   font-weight: 400;
+}
+
+.widget input[type="search"].search-field:-moz-placeholder,
+input[type="search"].search-field:-moz-placeholder { /* Firefox 18- */
+   color: #535353;
+   font-family: Arial, "Helvetica Neue", sans-serif;
+   font-size: 14px;
+   font-size: 0.875rem;
+   font-weight: 400;
+}
+
+.widget input[type="search"].search-field::-moz-placeholder,
+input[type="search"].search-field::-moz-placeholder { /* Firefox 19+ */
+   color: #535353;
+   font-family: Arial, "Helvetica Neue", sans-serif;
+   font-size: 14px;
+   font-size: 0.875rem;
+   font-weight: 400;
+}
+
+.widget input[type="search"].search-field:-ms-input-placeholder,
+input[type="search"].search-field:-ms-input-placeholder {
+   color: #535353;
+   font-family: Arial, "Helvetica Neue", sans-serif;
+   font-size: 14px;
+   font-size: 0.875rem;
+   font-weight: 400;
+}
+
+/* Suchen Widget- Ende */
+
+
+
+/* Widget eigenes Menu */ 
+
+.widget_nav_menu ul {
+  margin-bottom: 0;
+}
+
+/* Widget eigenes Menu - Ende */ 
+
+
+
+/* Widget Newsletter */
+
+.widget button,
+.widget input[type="button"],
+.widget input[type="reset"],
+.widget input[type="submit"] { /* Padding des Buttons */
+  padding: 11px 11px 10px 11px;
+  padding: 0.688rem 0.688rem 0.625rem 0.688rem;
+}
+
+/* Widget Newsletter - Ende */
+
+
+/* Widget Pages */
+
+.widget_pages ul ul {
+  padding: 0;
+}
+
+/* Widget Pages - Ende */
+
+
+/* Widget TagCloud */
+
+.widget_tag_cloud .tagcloud {
+  padding: 20px 20px 12px 20px;
+  padding: 1.25rem 1.25rem 0.75rem 1.25rem;
+}
+
+.tagcloud a:hover,
+.tagcloud a:focus {
+  border-color: #A1A1A1;
+  color: #A1A1A1;
+}
+
+/* Widget TagCloud - Ende */
+
+
+/* Widget Kategorien */
+
+.widget_categories .postform {
+  margin: 20px;
+  margin: 1.25rem;
+}
+
+.widget_categories ul ul {
+  padding: 0;
+}
+
+/* Widget Kategorien - Ende */
+
+.sidebar .widget_text .textwidget {
+  padding: 20px;
+  padding: 1.25rem;
+}
+
+.sidebar .widget_text .textwidget ul {
+  padding: 0;
+}
+
+/* Widget Text */
+
+
+/* Widget Text - Ende */
+
+
+/* Widget fuer Plugin The Events Calendar */
+
+.tribe-events-list-widget p {
+  padding: 20px;
+  padding: 1.25rem;
+}
+
+.tribe-events-list-widget .tribe-event-title {
+  font-size: 16px;
+  font-size: 1rem;
+  margin-bottom: 4px;
+  margin-bottom: 0.25rem;
+  padding-top: 20px;
+  padding-top: 1.25rem;
+}
+
+/* Widget fuer Plugin tribe-events-list-widget - Ende */
+
+
+/* Widget Netgo-Navigation */
+
+.widget_netgo_navigation { /* Grundformatierung */
+  padding-top: 0;
+  font-size: 16px;
+  font-size: 1rem;
+}
+
+.widget_netgo_navigation .widget-title { /* Da kein Titel fuer die Navigation vorhanden ist, wird der Padding direkt auf 0 gesetzt */
+  padding: 0;
+  height: 0;
+  min-height: 0;
+  margin-bottom: 0;
+}
+
+.widget_netgo_navigation ul li.current_page_item:first-child { /* Das erste Listenelement der Navigation soll den border-radius bekommen */
+  -webkit-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 0.313rem 0.313rem 0 0;
+  border-radius: 0.313rem 0.313rem 0 0;
+}
+
+.widget_netgo_navigation ul li.current_page_item:first-child a:hover,
+.widget_netgo_navigation ul li.current_page_item:first-child a:focus,
+.widget_netgo_navigation ul li:first-child a:hover,
+.widget_netgo_navigation ul li:first-child a:focus { /* Verhindert Verlust des border-radius bei hover  */
+  -webkit-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 0.313rem 0.313rem 0 0;
+  border-radius: 0.313rem 0.313rem 0 0;
+}
+
+.widget_netgo_navigation ul li.current_page_item:last-child { /* Das letzte Listenelement der Navigation soll border-radius bekommen */
+  -webkit-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
+  -webkit-border-radius: 0 0 0.313rem 0.313rem;
+  border-radius: 0 0 0.313rem 0.313rem;
+}
+
+.widget_netgo_navigation ul li.current_page_item:last-child a:hover,
+.widget_netgo_navigation ul li.current_page_item:last-child a:focus,
+.widget_netgo_navigation ul li:last-child a:hover,
+.widget_netgo_navigation ul li:last-child a:focus { /* Verhindert Verlust des border-radius bei hover */
+  -webkit-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
+  -webkit-border-radius: 0 0 0.313rem 0.313rem;
+  border-radius: 0 0 0.313rem 0.313rem;
+}
+
+.widget_netgo_navigation ul.children li.current_page_item:last-child,
+.widget_netgo_navigation ul.children li.current_page_item:first-child,
+.widget_netgo_navigation ul.children li:last-child a:hover,
+.widget_netgo_navigation ul.children li:last-child a:focus,
+.widget_netgo_navigation ul.children li:first-child a:hover,
+.widget_netgo_navigation ul.children li:first-child a:focus { /* Verhindert runde Ecken bei Listenelementen zwischendrin */
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+
+.widget_netgo_navigation .current_page_item { /* Hintergrundfarbe des ausgewaehlten Navigationspunktes */
+  background-color: #A1015B;
+}
+.widget_netgo_navigation .current_page_item:not(.page-has-children) a { /* Weisse Schrift fuer den ausgewaehlten Navigationspunkt ohne Kindelemente */
+  color: #FFF;
+}
+
+.widget_netgo_navigation li a { /* Schriftformatierung der Navigationelemente */
+  color: #1A171B;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.widget_netgo_navigation div.netgo_navigation li,
+.widget_netgo_navigation div.netgo_navigation .page-has-children  { /* Trennlinien der Listenelemente */
+  padding-left: 0;
+  border-bottom: 1px solid #C2C6D2;
+  line-height: 1;
+}
+
+.widget_netgo_navigation ul li:last-child {
+  border-bottom: none;
+}
+
+.widget_netgo_navigation div.netgo_navigation .page-has-children .page_item:not(:first-child) { /* Trennlinien der ersten Listenelemente */
+  border-top: 1px solid #C2C6D2;
+}
+
+.widget_netgo_navigation div.netgo_navigation li li,
+.widget_netgo_navigation div.netgo_navigation li li li,
+.widget_netgo_navigation div.netgo_navigation li li li li,
+.widget_netgo_navigation div.netgo_navigation li li li li li,
+.widget_netgo_navigation div.netgo_navigation .page-has-children .page-has-children,
+.widget_netgo_navigation div.netgo_navigation .page-has-children .page-has-children .page-has-children,
+.widget_netgo_navigation div.netgo_navigation .page-has-children .page-has-children .page-has-children .page-has-children { /* Keine zu dicken Abschlusslinien */
+  border-bottom: none;
+}
+
+.widget_netgo_navigation div.netgo_navigation .page-has-children .children  { /* Hintergrundfarbe fuer aufgeklappte Navigation */
+  background-color: #F6F6F6;
+  border-top: 1px solid #C2C6D2;
+}
+
+.widget_netgo_navigation div.netgo_navigation .page-has-children .children a { /* Formatierung fuer Menueunterpunkte */
+  font-weight: 400;
+  padding-left: 40px;
+  padding-left: 2.5rem;
+  margin-right: 0;
+  min-height: 47px;
+  min-height: 2.938rem;
+}
+
+.widget_netgo_navigation div.netgo_navigation .page-has-children .children .page-has-children a { /* Einrueckung fuer Menueunterpunkt zweite Stufe */
+  margin-right: 47px;
+  margin-right: 2.938rem;
+}
+
+.widget_netgo_navigation div.netgo_navigation .page-has-children .children .page-has-children .children a { /*  Menueunterpunkt zweite Stufe ohne Kindelemente */
+  padding-left: 60px;
+  padding-left: 3.75rem;
+  margin-right: 0;
+}
+
+.widget_netgo_navigation div.netgo_navigation .page-has-children .children .page-has-children .children .page-has-children a { /* Einrueckung fuer Menueunterpunkt dritte Stufe */
+  margin-right: 47px;
+  margin-right: 2.938rem;
+}
+
+.widget_netgo_navigation div.netgo_navigation .page-has-children .children .page-has-children .children .page-has-children .children a { /* Einrueckung fuer Menueunterpunkt dritte Stufe */
+  padding-left: 80px;
+  padding-left: 5rem;
+  margin-right: 0;
+}
+
+.widget_netgo_navigation div.netgo_navigation .page-has-children .children .page-has-children .children .page-has-children .children .page-has-children a { /* Einrueckung fuer Menueunterpunkt vierte Stufe */
+  margin-right: 47px;
+  margin-right: 2.938rem;
+}
+
+.widget_netgo_navigation div.netgo_navigation .page-has-children .children .page-has-children .children .page-has-children .children .page-has-children .children a { /* Einrueckung fuer Menueunterpunkt vierte Stufe */
+  padding-left: 100px;
+  padding-left: 6.250rem;
+  margin-right: 0;
+}
+
+.widget_netgo_navigation div.netgo_navigation li a,
+.widget_netgo_navigation div.netgo_navigation .page-has-children a { /* Formtierung der Links in der Navigation */
+  display: block;
+  padding: 16px 16px 15px 20px;
+  padding: 1rem 1rem 0.938rem 1rem;
+  line-height: 1;
+}
+
+.widget_netgo_navigation div.netgo_navigation li a:hover,
+.widget_netgo_navigation div.netgo_navigation li a:focus,
+.widget_netgo_navigation div.netgo_navigation .page-has-children a:hover,
+.widget_netgo_navigation div.netgo_navigation .page-has-children a:focus { /* Hintergrundfarbe fuer die Unterpunkte */
+  background-color: #A1015B;
+  color: #FFF;
+}
+
+
+.widget_netgo_navigation div.netgo_navigation li.current_page_item.page-has-children a { /* Aktiver Menuepunkt mit Kindelementen */
+  background-color: #A1015B;
+  color: #FFF;
+}
+
+.widget_netgo_navigation div.netgo_navigation li.current_page_item.page-has-children .children a { /* Kindelemente eines aktiven Menuepunktes */
+  background-color: #F6F6F6;
+  color: #1A171B;
+}
+
+.widget_netgo_navigation div.netgo_navigation li.current_page_item.page-has-children .children a:hover,
+.widget_netgo_navigation div.netgo_navigation li.current_page_item.page-has-children .children a:focus { /* Hover und Focus fuer Kindelemente eines aktiven Menuepunktes */
+  background-color: #A1015B;
+  color: #FFF;
+}
+
+.widget_netgo_navigation div.netgo_navigation li.page-has-children a { /* Platz schaffen fuer Pfeile rechts bei den Unterpunkten */
+  margin-right: 47px;
+  margin-right: 2.938rem;
+}
+
+.widget_netgo_navigation div.netgo_navigation .page-has-children .children:not(a) { /* Damit die Unterpunkte ueber die gesamte Breite anklickbar sind */
+  margin-right: 0;
+}
+
+.widget_netgo_navigation div.netgo_navigation li.current_page_ancestor,
+.widget_netgo_navigation div.netgo_navigation li.current_page_parent,
+.widget_netgo_navigation div.netgo_navigation li.netgo-navigation-selected,
+.widget_netgo_navigation div.netgo_navigation li.current_page_item.page-has-children,
+.widget_netgo_navigation div.netgo_navigation li.page-has-children { /* Überschreibt das Netgo-Plugin -> Formatierung fuer den Touchbutton mit Pfeil */
+  background: url(images/arrow-right-grey.png) no-repeat 100% 0px;
+}
+
+.widget_netgo_navigation div.netgo_navigation li.current_page_parent .children .current-page-item,
+.search-results .widget_netgo_navigation div.netgo_navigation li.current_page_parent,
+.search-no-results .widget_netgo_navigation div.netgo_navigation li.current_page_parent,
+.error404 .widget_netgo_navigation div.netgo_navigation li.current_page_parent,
+.archive .widget_netgo_navigation div.netgo_navigation li.current_page_parent,
+.single-post .widget_netgo_navigation div.netgo_navigation li.current_page_parent { /* Verhindert die Anzeige des Pfeils, wenn ein Beitrag geoeffnet ist, sowie den Pfeil bei News, wenn die Suchenseite bzw. die Suchenergebnisseite geoeffnet ist und bei der 404error-Seite, Archivseite */
+  background-image: none;
+}
+
+/* widget Netgo-Navigation - Ende */
+
+
+/** =======================================
+    Sidebar - Ende
+    ======================================= **/
+
+
+
+
+/** =======================================
+    Contentbereich
+    ======================================= **/
+
+/* Bildrundungen */
+
+.title-image-page-home { /* Titelbild auf Startseite formatieren */
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-border-radius: 0.313rem;
+  border-radius: 0.313rem;
+}
+
+.content-area .entry-content img,
+.content-area .entry-content .wp-caption img,
+.post-thumbnail img { /* Formatieren der restlichen Bilder der Webseite zur besseren Konsistenz */
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-border-radius: 0.313rem;
+  border-radius: 0.313rem;
+}
+
+#outerImageContainer { /* Lightboxrundung oben */
+  -webkit-border-top-left-radius: 5px;
+  border-top-left-radius: 5px;
+  -webkit-border-top-left-radius: 0.313rem;
+  border-top-left-radius: 0.313rem;
+  -webkit-border-top-right-radius: 5px;
+  border-top-right-radius: 5px;
+  -webkit-border-top-right-radius: 0.313rem;
+  border-top-right-radius: 0.313rem;
+}
+
+#imageDataContainer { /* Lightboxrundung unten */
+  -webkit-border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  -webkit-border-bottom-left-radius: 0.313rem;
+  border-bottom-left-radius: 0.313rem;
+  -webkit-border-bottom-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  -webkit-border-bottom-right-radius: 0.313rem;
+  border-bottom-right-radius: 0.313rem;
+}
+
+#lightbox img { /* Lightboxrundung Bild */
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-border-radius: 0.313rem;
+  border-radius: 0.313rem;
+}
+
+/* Bildrundungen - Ende */
+
+
+/* Beitrag / News */
+
+.entry-title { /* Ueberschrift von Artikeln und Seiten */
+  font-size: 20px;
+  font-size: 1.25rem;
+}
+
+@media screen and (min-width: 44.375rem) {
+  .entry-title { /* Ueberschrift von Artikeln und Seiten */
+    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
+    font-size: 20px;
+    font-size: 1.25rem;
+  }
+}
+
+@media screen and (min-width: 61.5625rem) { /* 985px */
+  .entry-title { /* Ueberschrift von Seiten und Artikeln */
+    font-size: 24px;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+}
+
+body:not(.search-results) .entry-header + .entry-summary { /* Formatierung, falls der "Auszug" fuer Artikel benutzt werden soll */
+  margin-top: 0;
+  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
+}
+
+:not(.search-results) .entry-header + .entry-summary p { /* Formatierung, falls der "Auszug" fuer Artikel benutzt werden soll */
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.pagination { /* Formatierung der Pagination auf der Artikeluebersichtsseite */
+  margin-left: 10px;
+  margin-left: 0.625rem;
+  margin-right: 10px;
+  margin-right: 0.625rem;
+}
+
+@media only screen and (min-width: 48rem) { /* 768px */
+  .pagination {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.pagination { 
+  border-top-width: 2px;
+  border-top-width: 0.125rem;
+}
+
+.pagination .prev,
+.pagination .next { 
+  font-family: Montserrat, "Helvetica Neue", sans-serif;
+  background-color: #A1015B;
+}
+
+.pagination .prev:hover,
+.pagination .next:hover,
+.pagination .prev:focus,
+.pagination .next:focus { 
+  background-color: #a1a1a1;
+}
+
+.pagination a:hover,
+.pagination a:focus { 
+  color: #a1a1a1;
+} /* Formatierung der Pagination auf der Artikeluebersichtsseite - Ende */
+
+.site-main > article { /* Artikelformatierung gilt fuer Blog-Uebersichtsseite und normale Seiten */ 
+  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
+  padding-bottom: 40px;
+  padding-bottom: 2.5rem;
+  border-bottom: 4px dotted #CBCCDC;
+  border-bottom: 0.25rem dotted #CBCCDC;
+}
+
+.home .site-main > article:first-child {
+  margin-bottom: 4px;
+  margin-bottom: 0.25rem;
+}
+
+.blog .site-main > article:last-of-type { /* Letzter Artikel auf Übersichtsseite wird anders formatiert */
+  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+/* Beitrag / News - Ende */
+
+
+
+/* Navigationsrahmen unterhalb eines einzelnen Artikels */
+
+.post-navigation div + div { 
+  border-top-width: 2px;
+  border-top-width: 0.125rem;
+}
+
+.post-navigation {
+  border-top-width: 2px;
+  border-top-width: 0.125rem;
+  border-bottom-width: 2px;
+  border-bottom-width: 0.125rem;
+}
+
+.post-navigation a:hover .post-title,
+.post-navigation a:focus .post-title {
+  color: #A1015B;
+}
+
+.post-navigation .post-title {
+  font-size: 19px;
+  font-size: 1.188rem;
+}
+
+/* Navigationsrahmen unterhalb eines einzelnen Artikels - Ende */
+
+
+
+/* Kommentare */
+
+.comments-area { /* Fuegt gestrichelte Linie unter den Kommentarberiech ein */
+  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
+  padding-bottom: 40px;
+  padding-bottom: 2.5rem;
+  border-bottom: 4px dotted #CBCCDC;
+  border-bottom: 0.25rem dotted #CBCCDC;
+}
+
+.comment-reply-link {
+  background-color: #A1015B;
+  border: 0;
+  color: #fff;
+  letter-spacing: 0.6px;
+  letter-spacing: 0.037rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 11px 11px 10px 11px;
+  padding: 0.688rem 0.688rem 0.625rem 0.688rem;
+  border-radius: 0;
+}
+
+.comment-reply-link:hover,
+.comment-reply-link:focus {
+  background-color: #a1a1a1;
+  color: #FFF;
+}
+
+.comment-list article,
+.comment-list .pingback,
+.comment-list .trackback {
+  border-color: #CBCCDC;
+}
+
+.comments-title,
+.comment-reply-title {
+  border-top-width: 2px;
+  border-top-width: 0.125rem;
+}
+
+/* Kommentare - Ende */
+
+
+
+/* Seniorenbeirat */
+
+table { /* Zieht alle Tabellen auf die volle Contentbreite (auch wenn manuell ein genauer Wert eingegeben wurde) */
+  width: 100% !important; 
+}
+
+table table { /* buegelt Fehler im HTML-Code der Tabellen aus */
+  margin-bottom: 0;
+}
+
+table tr { /* buegelt Fehler im HTML-Code der Tabellen aus */
+  height: auto !important; 
+}
+
+table tr td {
+  vertical-align: top;
+  line-height: 1.2;
+  font-size: 12px;
+  font-size: 0.75rem;
+  height: auto !important; /* buegelt Fehler im HTML-Code der Tabellen aus */
+  /*width: auto !important;*/
+}
+
+@media screen and (max-width: 79.938rem) { /* 1279px */
+  table tr td {
+    width: inherit !important; /* Erhaelt fuer grosse Bildschirme das inline-CSS */
+  }
+}
+
+@media only screen and (min-width: 48rem) { /* 768px */
+  table tr td {
+    font-size: 14px;
+    font-size: 0.875rem;
+  }
+}
+
+.content-area .entry-content table tr td img,
+.aligncenter {
+    margin: 0 auto;
+}
+
+/* Seniorenbeirat - Ende */
+
+
+
+/* Sitemap */
+
+code { /* Behebt fehlerhafte Anzeige bei Einsatz des code-tags auf der Sitemapseite */
+  background-color: transparent;
+  padding: 0;
+}
+
+/* Sitemap - Ende */
+
+
+
+/* Suchenseite */
+
+.search-submit {
+  width: 47px;
+  width: 2.938rem;
+  height: 47px;
+  height: 2.938rem;
+}
+
+.search-submit:before {
+  font-size: 18px;
+  font-weight: 700;
+  left: 1px;
+  left: 0.063rem;
+}
+
+.page-header {
+  border-top-width: 2px;
+  border-top-width: 0.125rem;
+}
+
+.site-main .page-content input[type="search"].search-field { /* Nur wegen IE-Bug */
+  height: 47px;
+  height: 2.938em;
+}
+
+/* Suchenseite - Ende */
+
+
+
+/* Home */
+
+.home figure.wp-caption img {
+  margin: 0 !important;
+}
+
+.last-changes-page-home-wrapper { /* Wrapper fuer die 2te Ueberschrift auf der Homeseite */
+  padding-top: 59px;
+  padding-top: 3.688rem;
+  border-top: none;
+  border-top: none;
+  border-bottom: 4px dotted #CBCCDC;
+  border-bottom: 0.25rem dotted #CBCCDC;
+  padding-bottom: 8px;
+  padding-bottom: 0.5rem;
+  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
+  margin-left: 10px;
+  margin-left: 0.625rem;
+  margin-right: 10px;
+  margin-right: 0.625rem;
+}
+
+.last-changes-page-home {
+  color: #1a1a1a;
+}
+
+.site-main > article.page-home-single-news-wrapper { /* Wrapper fuer den einzelnen Artikel der neuesten Artikel auf der Homeseite */
+  padding-bottom: 10px;
+  padding-bottom: 0.625rem;
+  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
+  margin-left: 10px;
+  margin-left: 0.625rem;
+  margin-right: 10px;
+  margin-right: 0.625rem;
+}
+
+@media only screen and (min-width: 48rem) { /* 768px */
+  .last-changes-page-home-wrapper {
+    border-top: 4px dotted #CBCCDC;
+    border-top: 0.25rem dotted #CBCCDC;
+    margin-left: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-right: 0;
+  }
+
+  .site-main > article.page-home-single-news-wrapper {
+    margin-left: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-right: 0;
+  }
+}
+
+.page-home-heading-news { /* Ueberschrift eines Artikels auf der Homeseite */
+  line-height: 1.121796;
+  margin-bottom: 32px;
+  margin-bottom: 2rem;
+}
+
+.page-home-single-news-wrapper ul { /* Pfeil fuer Listen */
+  margin-bottom: 28px;
+  margin-bottom: 1.75rem;
+  list-style-image: url(images/mehr-pfeil.png);
+  margin-left: 16px;
+  margin-left: 1rem;
+}
+
+.site-main > article.page-home-single-news-wrapper p a,
+.site-main > article.page-home-single-news-wrapper ul li a { /* Unterstrichene Links */
+  box-shadow: none;
+  text-decoration: underline;
+}
+
+.entry-content a,
+.entry-summary a,
+.taxonomy-description a,
+.logged-in-as a,
+.comment-content a,
+.pingback .comment-body > a,
+.textwidget a,
+.entry-footer a:hover,
+.site-info a:hover {
+  box-shadow: none;
+  text-decoration: underline;
+}
+
+hr {
+  background-color: #CBCCDC;
+}
+
+.wp-caption.alignleft,
+.wp-caption.alignright,
+img.alignright,
+img.alignleft { /* Hilft bei der besseren Platzaufteilung (Bilder - Text) fuer mobile Geraete */ 
+  max-width: 44%;
+}
+
+
+/* Home - Ende */
+
+/* Ausblenden des Antwortenbuttons im Gaestebuch */
+.h-guestbook .reply {
+    display: none;
+}
+/* Ausblenden des Antwortenbuttons im Gaestebuch - Ende */
+
+
+/* Kompatibilitaet von inline eingefuegten Bildern bestehender Webseiten */
+
+.content-area .entry-content img.alignleft {
+  display: block;
+  margin: 6px 28px 28px 0;
+  margin: 0.375em 1.75em 1.75em 0;
+}
+
+.content-area .entry-content img.alignright {
+  display: block;
+  margin: 6px 0 28px 28px;
+  margin: 0.375em 0 1.75em 1.75rem;
+}
+
+.content-area .entry-content img.aligncenter {
+  display: block;
+  margin: 0 auto;
+}
+
+.content-area .entry-content .gallery a { /* Verhindert durchgezogenen Strich bei transparenten PNGs */
+  box-shadow: none;
+}
+
+.content-area .entry-content .gallery img {
+  margin: 0;
+}
+
+.content-area .entry-content .wp-caption img {
+  display: block;
+  margin: 0;
+}
+
+.content-area .entry-content a:hover img,
+.content-area .entry-content a:focus img {
+  opacity: 0.7;
+}
+
+.content-area .entry-content img {
+  display: inline-block;
+  /*margin: 10px;
+  margin: 0.625rem;*/ /* Das wäre der korrekte 10px Wert, wenn überall sauberes HTML programmiert wäre */
+  margin: 8px;
+  margin: 0.5rem; /* Dieser Wert verhindert, dass bei mehreren Bildern mit Leerzeichen im HTML-Code nur noch 3 Bilder in eine Reihe passen */ 
+}
+
+.content-area p a { /* Verhindert Striche hinter den Bildern, die von einem Link umklammert sind */
+  text-decoration: underline;
+  box-shadow: none;
+}
+
+.wp-caption-text {
+  text-align: center;
+}
+
+.content-area .entry-content img.title-image-page-home { /* Stellt sicher, dass fuer bestimmte Webseiten die Bilder im Gesamtrahmen bleiben */
+  margin: 0;
+}
+
+/* Kompatibilitaet von inline eingefuegten Bildern bestehender Webseiten - Ende */
+
+/** =======================================
+    Contentbereich - Ende
+    ======================================= **/
+
+
+
+
+/** =======================================
+    Footer der Seite
+    ======================================= **/
+
+.site-footer {
+  background-color: #F7F7F8;
+  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
+  padding-top: 39px;
+  padding-top: 2.438rem;
+  padding-bottom: 39px;
+  padding-bottom: 2.438rem;
+}
+
+@media screen and (min-width: 48rem) { /* 768px */
+  .site-footer {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-top: 20px;
+    padding-top: 1.25rem;
+    padding-bottom: 18px;
+    padding-bottom: 1.125rem;
+  }
+}
+
+@media screen and (min-width: 68.75rem) { /* 1100px */
+  .site-footer {
+    padding-left: 40px;
+    padding-left: 2.5rem;
+  }
+}
+
+.site-footer .bew-logo {
+  padding-top: 37px;
+  padding-top: 2.313rem;
+  display: block;
+  width: 238px;
+  width: 14.875rem;
+  margin: 0 auto;
+}
+
+
+@media screen and (min-width: 48rem) { /* 768px */
+  .site-footer .bew-logo {
+    display: none;
+  }
+}
+
+.sbr-footer {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 75%;
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+}
+
+.sbr-footer center br {
+  display: none;
+}
+
+.sbr-footer .widget {
+  border-width: 0;
+}
+
+.footer-navigation .textwidget {
+  font-size: 12px;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.footer-navigation .textwidget a {
+  box-shadow: 0 0 0 0 #FFF;
+}
+
+.rss-link {
+  width: 32px;
+  width: 2rem;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 37px;
+  margin-bottom: 2.313rem;
+  margin-top: 0;
+}
+
+@media screen and (min-width: 48rem) { /* 768px */
+  .rss-link {
+    margin-bottom: 16px;
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (min-width: 56.875rem) { /* 768px */
+  .rss-link {
+    margin-bottom: 0;
+  }
+}
+
+.rss-link:hover img,
+.rss-link:focus img {
+  opacity: 0.7;
+}
+
+.rss-symetrieausgleich { /* Dient nur dazu, dass bei Breite > 768px der Footertext genau zentriert bleibt */
+  display: none;
+  width: 32px;
+  width: 2rem;
+  height: 32px;
+  height: 2rem;
+  float: right;
+}
+
+@media screen and (min-width: 48rem) { /* 768px */
+  .rss-symetrieausgleich {
+    display: block;
+  }
+}
+
+/** =======================================
+    Footer der Seite - Ende
+    ======================================= **/

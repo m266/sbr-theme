@@ -1,0 +1,10 @@
+/* Template ohne Sidebar */
+/* Sidebar ausblenden */
+#secondary {
+  display: none !important;
+}
+/* Content auf volle Breite */
+.content-area {
+ width: 100% !important;
+}
+

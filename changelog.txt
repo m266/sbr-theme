@@ -1,0 +1,13 @@
+=== SBR-Theme ===
+Requires at least: 4.0
+Tested up to: 4.9.8
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+
+== Description ==
+SBR-Theme für Websites der SBR-Gremien Post Postbank Telekom
+
+== Changelog ==
+Version 2.0.0
+1. Erste Version auf GitHub
