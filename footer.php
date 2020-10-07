@@ -29,12 +29,12 @@
             <!-- SBR-Footer -->
             <div class="sbr-footer">
 
-	            <?php do_shortcode('[h_last_modified]');  ?>
+	            <?php echo do_shortcode('[h_modified]');  ?>
+                <br>
+	            <?php /* echo bloginfo('name');?>&nbsp;<?php bloginfo('description');*/ ?>
+	            <span class="center"><?php echo do_shortcode("[h_copyright]"); ?></span>
 
-	            <?php /* echo bloginfo( 'name' );?>&nbsp;<?php bloginfo('description');*/ ?>
-	            <span class="center"><?php do_shortcode('[h_copyright_year]'); ?></span>
 
-                
 	            <!-- BeW-Logo nur mobile -->
                 <div class="bew-logo">
                 	<a href="http://www.betreuungswerk.de/" title="Betreuungswerk Post Postbank Telekom" target="_blank"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/bew-logo.png" alt="Betreuungswerk Post Postbank Telekom" width="238" height="82" /></a>

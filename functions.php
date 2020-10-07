@@ -122,3 +122,6 @@ function wpse_enqueue_page_template_styles() {
     }
 }
 add_action('wp_enqueue_scripts', 'wpse_enqueue_page_template_styles');
+
+// Anpassungen fuer SBR-Websites einbinden
+require_once 'functions_sbr.php';  
