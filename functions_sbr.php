@@ -50,4 +50,27 @@ function h_modified_page() {
         }
 }
 add_shortcode('h_modified', 'h_modified_page');
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+Remove query strings from static ressources
+Dieser Shortcode entfernt die Datenbank-Strings von statischen Ressourcen und verbessert
+damit die Performance der Website.
+Quelle: https://kinsta.com/de/wissensdatenbank/entfernst-du-abfragezeichenfolgen-
+aus-statischen-ressourcen/
+*/
+if (!function_exists('remove_query_strings')) { // Prüfung, ob Funktion bereits vorhanden
+function remove_query_strings() {
+   if(!is_admin()) {
+       add_filter('script_loader_src', 'remove_query_strings_split', 15);
+       add_filter('style_loader_src', 'remove_query_strings_split', 15);
+   }
+}
+function remove_query_strings_split($src){
+   $output = preg_split("/(&ver|\?ver)/", $src);
+   return $output[0];
+}
+add_action('init', 'remove_query_strings');
+}
 ?>
