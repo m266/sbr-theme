@@ -9,6 +9,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 SBR-Theme für Websites der SBR-Gremien Post Postbank Telekom
 
 == Changelog ==
+Version 2.3
+1. CSS für "MailPoet 3: Profilseite bearbeiten" in style.css eingefügt
+2. Sicherheitslücke: REST-API gesperrt für Besucher
+
 Version 2.2
 1. Admin notice im Shortcode "Copyright-Zeile" beseitigt
 2. PHP-Code für Remove query strings from static ressources eingefügt

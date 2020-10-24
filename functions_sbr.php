@@ -73,4 +73,31 @@ function remove_query_strings_split($src){
 }
 add_action('init', 'remove_query_strings');
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+REST-API sperren
+*/
+add_filter( 'rest_authentication_errors', function( $result ) {
+	if ( ! empty( $result ) ) {
+		return $result;
+	}
+	if ( ! is_user_logged_in() ) {
+		return new WP_Error( 'restx_logged_out', 'Zugriff nicht erlaubt! - Not allowed!', array( 'status' => 401 ) );
+	}
+	return $result;
+});
+
+
+add_filter( 'rest_authentication_errors', function( $result ) {
+	if ( ! empty( $result ) ) {
+		return $result;
+	}
+	if ( ! is_user_logged_in() ) {
+		return new WP_Error( 'restx_logged_out', 'Zugriff nicht erlaubt! - Not allowed!', array( 'status' => 401 ) );
+	}
+	return $result;
+});
+
 ?>

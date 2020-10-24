@@ -5,8 +5,8 @@ Description:        SBR-Theme für Websites der SBR-Gremien Post Postbank Teleko
 Author:             Hans M. Herbrand
 Author URI:         https://www.web266.de
 Template:           twentysixteen
-Version:            2.2
-Date:               2020-10-11
+Version:            2.3
+Date:               2020-10-24
 License:            GNU General Public License v2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 Tags:               two-columns, left-sidebar, accessibility-ready
@@ -1704,3 +1704,18 @@ img.alignleft { /* Hilft bei der besseren Platzaufteilung (Bilder - Text) fuer m
 /** =======================================
     Footer der Seite - Ende
     ======================================= **/
+
+/* MailPoet 3-Profilseite: Zeilen für Vorname, Nachname, Zustimmung, Listen
+in Abo-Verwaltung ausblenden */
+label.mailpoet_text_label {
+display: none;
+}
+.mailpoet_text {
+display: none;
+}
+label.mailpoet_checkbox_label {
+display: none;
+}
+label.mailpoet_segment_label {
+display: none;
+}    
