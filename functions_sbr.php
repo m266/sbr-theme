@@ -8,8 +8,8 @@ Wenn vorhanden, wird das Erstellungsjahr des Blogs/der Website dem aktuellen Jah
 vorangestellt (z. B. 2014 - 2020).
 */
 // Erstellungsjahr aus Datenbank auslesen
-$blog_created = get_option('wpht_settings')['wpht_text_field_0'];
-
+$blog_created = !empty(get_option('wpht_settings')['wpht_text_field_0']);
+// Notice: Undefined index (leere Variable) beseitigt
 function copyright_zeile() {
     global $blog_created; // Variable "$blog_created" als global definieren
     if ($blog_created == "") {  // Erstellungsjahr fehlt
