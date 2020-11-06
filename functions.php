@@ -124,4 +124,10 @@ function wpse_enqueue_page_template_styles() {
 add_action('wp_enqueue_scripts', 'wpse_enqueue_page_template_styles');
 
 // Anpassungen fuer SBR-Websites einbinden
-require_once 'functions_sbr.php';  
+require_once 'functions_sbr.php';
+
+// Comment Blacklist Manager einbinden
+//  Plugin "WP H-Tools inaktiv?
+    if (is_plugin_inactive('wp-h-tools/wp_h_tools.php')) {
+            require_once 'comment-blacklist-manager.php';
+         }
