@@ -13,9 +13,9 @@
  */
 
 /*
-Angepasst für SBR-Websites
-Einige relevante Strings übersetzt
-Link zu eigener Blacklist auf GitHub eingefügt
+Angepasst fÃ¼r SBR-Websites
+Einige relevante Strings Ã¼bersetzt
+Link zu eigener Blacklist auf GitHub eingefÃ¼gt in Zeile 419
 */
 
 class SBR_CBL_Manager_Core
