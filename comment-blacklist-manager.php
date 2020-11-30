@@ -16,8 +16,8 @@
 Angepasst für SBR-Websites
 Einige relevante Strings übersetzt
 Link zu eigener Blacklist auf GitHub eingefügt in Zeile 419
+Original-Blacklist temporaer deaktiviert in Zeile 418
 */
-
 class SBR_CBL_Manager_Core
 {
 
@@ -415,7 +415,7 @@ class SBR_CBL_Manager_Core
 	static function blacklist_sources() {
 
 		$lists	= array(
-            'https://raw.githubusercontent.com/splorp/wordpress-comment-blacklist/master/blacklist.txt',
+        /*    'https://raw.githubusercontent.com/splorp/wordpress-comment-blacklist/master/blacklist.txt', */
             'https://raw.githubusercontent.com/m266/wordpress-comment-blacklist/master/blacklist.txt'
 		);
 
