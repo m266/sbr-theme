@@ -156,5 +156,11 @@ $wpiec = new sbriec();
 add_shortcode('wpiec', array($wpiec, 'displayShortcode'));
 
 //////////////////////////////////////////////////////////////////////////////////////////
-
+//Eigene Blacklist von GitHub einfuegen
+add_filter( 'cblm_sources', 'rkv_cblm_replace_blacklist_sources' );
+function rkv_cblm_replace_blacklist_sources( $list ) {
+return array(
+'https://raw.githubusercontent.com/m266/wordpress-comment-blacklist/master/blacklist.txt'
+);
+}   
 ?>

@@ -13,10 +13,9 @@
  */
 
 /*
-Angepasst für SBR-Websites
+Angepasst für SBR-Websites: 07.12.2020
 Einige relevante Strings übersetzt
-Link zu eigener Blacklist auf GitHub eingefügt in Zeile 419
-Original-Blacklist temporaer deaktiviert in Zeile 418
+Klasse geaendert in "class SBR_CBL_Manager_Core"
 */
 class SBR_CBL_Manager_Core
 {
@@ -415,8 +414,7 @@ class SBR_CBL_Manager_Core
 	static function blacklist_sources() {
 
 		$lists	= array(
-        /*    'https://raw.githubusercontent.com/splorp/wordpress-comment-blacklist/master/blacklist.txt', */
-            'https://raw.githubusercontent.com/m266/wordpress-comment-blacklist/master/blacklist.txt'
+            'https://raw.githubusercontent.com/splorp/wordpress-comment-blacklist/master/blacklist.txt'
 		);
 
 		return apply_filters( 'cblm_sources', (array) $lists );
