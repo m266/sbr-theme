@@ -1,16 +1,19 @@
 === SBR-Theme ===
 Requires at least: 4.0
-Tested up to: 5.5.3
+Tested up to: 5.6
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
 == Description ==
-SBR-Theme für Websites der SBR-Gremien Post Postbank Telekom
+SBR-Theme fÃ¼r Websites der SBR-Gremien Post Postbank Telekom
 
 == Changelog ==
+Version 2.6.4
+1. Meldung Ã¼ber nicht vorhandenes Plugin "WP H-NetGo" ausgeblendet
+
 Version 2.6.3
-1. Filter in Datei functions_sbr.php zum Ersetzen der Default-Blacklist für das Plugin "Comment Blacklist Manager" eingefügt
+1. Filter in Datei functions_sbr.php zum Ersetzen der Default-Blacklist fÃ¼r das Plugin "Comment Blacklist Manager" eingefÃ¼gt
 
 Version 2.6.2
 1. Original-Blacklist in Datei comment-blacklist-manager.php deaktiviert
@@ -19,28 +22,28 @@ Version 2.6.1
 1. Datei comment-blacklist-manager.php in UTF-8 abgespeichert
 
 Version 2.6
-1. Comment Blacklist Manager eingefügt
+1. Comment Blacklist Manager eingefÃ¼gt
 
 Version 2.5
 1. Admin notice beseitigt
 
 Version 2.4
-1. PHP-Code für "Insert External Content" eingefügt
+1. PHP-Code fÃ¼r "Insert External Content" eingefÃ¼gt
 
 Version 2.3.1
 1. REST-API wegen zahlreicher Probleme mit Plugins wieder freigegeben
 
 Version 2.3
-1. CSS für "MailPoet 3: Profilseite bearbeiten" in style.css eingefügt
-2. Sicherheitslücke: REST-API gesperrt für Besucher
+1. CSS fÃ¼r "MailPoet 3: Profilseite bearbeiten" in style.css eingefÃ¼gt
+2. SicherheitslÃ¼cke: REST-API gesperrt fÃ¼r Besucher
 
 Version 2.2
 1. Admin notice im Shortcode "Copyright-Zeile" beseitigt
-2. PHP-Code für Remove query strings from static ressources eingefügt
+2. PHP-Code fÃ¼r Remove query strings from static ressources eingefÃ¼gt
 
 Version 2.1
 1. Seite functions_sbr.php erstellt (inkludiert in functions.php)
-2. PHP-Code für Copyright-Zeile und Erstellungsdatum angelegt
+2. PHP-Code fÃ¼r Copyright-Zeile und Erstellungsdatum angelegt
 
 
 Version 2.0.1

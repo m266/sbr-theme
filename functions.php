@@ -24,21 +24,6 @@ if (!function_exists('is_plugin_inactive')) {
     require_once ABSPATH . '/wp-admin/includes/plugin.php';
 }
 
-// Plugin "WP H-NetGo" inaktiv?
-if (is_plugin_inactive('netgo-2/netgo-2.php')) {
-    // Plugin ist inaktiv
-    function sbr_missing_wp_h_netgo_notice() {; // Plugin "WP H-NetGo" fehlt
-        ?>
-    <div class="error notice">  <!-- Wenn ja, Meldung ausgeben -->
-        <p><?php _e('Bitte das Plugin <a href="https://web266.de/software/eigene-plugins/netgo-2/" target="_blank">
-        <b>"WP H-NetGo"</b></a> herunterladen, installieren und aktivieren.
-        Ansonsten wird die Seiten-Navigation nicht angezeigt!');?></p>
-    </div>
-                        <?php
-}
-    add_action('admin_notices', 'sbr_missing_wp_h_netgo_notice');
-}
-
 // Plugin "WP H-Exclude Pages" inaktiv?
 if (is_plugin_inactive('exclude-pages-2/exclude_pages.php')) {
     // Plugin ist inaktiv
