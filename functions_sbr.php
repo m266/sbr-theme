@@ -162,5 +162,19 @@ function rkv_cblm_replace_blacklist_sources( $list ) {
 return array(
 'https://raw.githubusercontent.com/m266/wordpress-comment-blacklist/master/blacklist.txt'
 );
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// Optional HTML-Code für Mehrfachauswahl in HappyForms erlauben
+// Plugin HappyForms aktiv?
+        if (!function_exists('is_plugin_active')) {
+            require_once ABSPATH . '/wp-admin/includes/plugin.php';
+        }
+        if (is_plugin_active('happyforms/happyforms.php')) {
+add_filter( 'happyforms_part_frontend_template_path_checkbox', function( $template ) {
+    $template = get_stylesheet_directory() . '/frontend-checkbox.php';
+
+    return $template;
+} );
 }   
 ?>
