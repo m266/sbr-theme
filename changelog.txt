@@ -1,6 +1,6 @@
 === SBR-Theme ===
 Requires at least: 4.0
-Tested up to: 5.6.2
+Tested up to: 5.7
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -9,6 +9,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 SBR-Theme für Websites der SBR-Gremien Post Postbank Telekom
 
 == Changelog ==
+Version 2.6.6
+1. Seitentemplate page_home.php gelöscht
+2. Code-Ergänzung zum Anzeigen von Beiträgen auf der Startseite in der Datei functions-sbr.php eingefügt 
+
 Version 2.6.5
 1. Vorbereitet für die Verwendung des Plugins "HappyForms"
 

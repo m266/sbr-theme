@@ -176,5 +176,37 @@ add_filter( 'happyforms_part_frontend_template_path_checkbox', function( $templa
 
     return $template;
 } );
-}   
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// Beiträge in Seiten einfügen
+// Quelle: https://ostrich.de/wordpress-beitraege-auf-seite-anzeigen/
+// Version 1.0
+// 09.03.2021
+// Tag [posts] in der Start-Seite einfügen
+function shortcode_posts_function(){
+    //Parameter für Posts
+    $args = array(
+        'category' => 'news', // Kategorie
+        'numberposts' => 5  // Anzahl der Beiträge
+    );
+    //Posts holen
+    $posts = get_posts($args);
+    //Inhalte sammeln
+    $content = '<div class="posts">';
+    $content .= '<hr>
+    <h1 class="page-title">Letzte &Auml;nderungen:</h1>';
+    foreach ($posts as $post) {
+        $content .= '<div class="post">';
+        $content .= '<b><a href="'.get_permalink($post->ID).'"><div class="title">'.$post->post_title.'</div></b></a>';
+        $content .= '<div class="post-date">'.mysql2date('d. F Y', $post->post_date).'</div>';
+        $content .= '<div class="post-entry">'.wp_trim_words($post->post_content).'</div>';
+        $content .= '<a href="'.get_permalink($post->ID).'"><div class="post-entry">'."Weiterlesen...".'<hr></div></a>';
+        $content .= '</div>';
+    }
+    $content .= '</div>';
+    //Inhalte übergeben
+    return $content;
+}
+add_shortcode('posts', 'shortcode_posts_function');
 ?>
