@@ -165,17 +165,21 @@ return array(
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// Optional HTML-Code für Mehrfachauswahl in HappyForms erlauben
-// Plugin HappyForms aktiv?
-        if (!function_exists('is_plugin_active')) {
-            require_once ABSPATH . '/wp-admin/includes/plugin.php';
-        }
-        if (is_plugin_active('happyforms/happyforms.php')) {
-add_filter( 'happyforms_part_frontend_template_path_checkbox', function( $template ) {
-    $template = get_stylesheet_directory() . '/frontend-checkbox.php';
-
-    return $template;
-} );
+// Allow HTML-Code for HappyForms at multi selection fields
+// Is Plugin HappyForms activ?
+if (!function_exists('is_plugin_active')) {
+    require_once ABSPATH . '/wp-admin/includes/plugin.php';
+}
+if (is_plugin_active('happyforms/happyforms.php')) {
+//  Change Strings in frontend-checkbox.php
+    $path_to_file = ABSPATH . 'wp-content/plugins/happyforms/core/templates/parts/frontend-checkbox.php';
+    $file_contents = file_get_contents($path_to_file);
+    $file_contents = str_replace("<?php echo esc_attr( \$option['label'] ); ?>", "<?php echo html_entity_decode( \$option['label'] ); ?>", $file_contents);
+    file_put_contents($path_to_file, $file_contents);
+    add_filter('happyforms_part_frontend_template_path_checkbox', function ($template) {
+        $template = ABSPATH . 'wp-content/plugins/happyforms/core/templates/parts/frontend-checkbox.php';
+        return $template;
+    });
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////

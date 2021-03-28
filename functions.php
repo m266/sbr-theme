@@ -24,21 +24,6 @@ if (!function_exists('is_plugin_inactive')) {
     require_once ABSPATH . '/wp-admin/includes/plugin.php';
 }
 
-// Plugin "WP H-Exclude Pages" inaktiv?
-if (is_plugin_inactive('exclude-pages-2/exclude_pages.php')) {
-    // Plugin ist inaktiv
-    function sbr_missing_wp_h_exclude_pages_notice() {; // Plugin "WP H-Exclude Pages" fehlt
-        ?>
-    <div class="error notice">  <!-- Wenn ja, Meldung ausgeben -->
-        <p><?php _e('Bitte das Plugin <a href="https://web266.de/software/eigene-plugins/exclude-pages-2/" target="_blank">
-        <b>"WP H-Exclude Pages"</b></a> herunterladen, installieren und aktivieren.
-        Ansonsten k&ouml;nnen keine Seiten in der Navigation ausgeblendet werden!');?></p>
-    </div>
-                        <?php
-}
-    add_action('admin_notices', 'sbr_missing_wp_h_exclude_pages_notice');
-}
-
 //
 // Header Image
 // Es wird das default-image eingeblendet, wenn kein eigenes Headerbild aktiviert wird

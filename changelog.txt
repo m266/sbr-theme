@@ -9,6 +9,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 SBR-Theme für Websites der SBR-Gremien Post Postbank Telekom
 
 == Changelog ==
+Version 2.6.7
+1. Vorbereitet für die Verwendung des Plugins "HappyForms" (Links in Privacy Police einfügen)
+2. Meldung über fehlendes Plugin "WP H-Exclude Pages" aus Datei functions.php entfernt
+
 Version 2.6.6
 1. Seitentemplate page_home.php gelöscht
 2. Code-Ergänzung zum Anzeigen von Beiträgen auf der Startseite in der Datei functions-sbr.php eingefügt 
