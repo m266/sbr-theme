@@ -172,14 +172,25 @@ if (!function_exists('is_plugin_active')) {
 }
 if (is_plugin_active('happyforms/happyforms.php')) {
 //  Change Strings in frontend-checkbox.php
-    $path_to_file = ABSPATH . 'wp-content/plugins/happyforms/core/templates/parts/frontend-checkbox.php';
-    $file_contents = file_get_contents($path_to_file);
-    $file_contents = str_replace("<?php echo esc_attr( \$option['label'] ); ?>", "<?php echo html_entity_decode( \$option['label'] ); ?>", $file_contents);
-    file_put_contents($path_to_file, $file_contents);
-    add_filter('happyforms_part_frontend_template_path_checkbox', function ($template) {
-        $template = ABSPATH . 'wp-content/plugins/happyforms/core/templates/parts/frontend-checkbox.php';
-        return $template;
+    $wphhft_string_orig = "<?php echo esc_attr( \$option['label'] ); ?>";
+    $wphhft_string_new = "<?php echo html_entity_decode( \$option['label'] ); ?>";
+
+    $wphhft_path_to_file = ABSPATH . 'wp-content/plugins/happyforms/core/templates/parts/frontend-checkbox.php';
+    $wphhft_file_contents = file_get_contents($wphhft_path_to_file);
+    $wphhft_file_contents = str_replace($wphhft_string_orig, $wphhft_string_new, $wphhft_file_contents);
+    file_put_contents($wphhft_path_to_file, $wphhft_file_contents); // Replace strings
+    add_filter('happyforms_part_frontend_template_path_checkbox', function ($wphhft_template) {
+        $wphhft_template = ABSPATH . 'wp-content/plugins/happyforms/core/templates/parts/frontend-checkbox.php';
+        return $wphhft_template;
     });
+} else {
+    register_activation_hook(__FILE__, 'wphhft_inactiv'); // Funktions-Name anpassen
+    function wphhft_inactiv()
+    { // Funktions-Name anpassen
+        $subject = 'Plugin "WP H-HappyForms Tools"'; // Plugin-Name anpassen
+        $message = 'Bitte das Plugin "<a href="https://de.wordpress.org/plugins/happyforms/">HappyForms</a>" installieren und aktivieren!';
+        wp_mail(get_option("admin_email"), $subject, $message);
+    }
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
