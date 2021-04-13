@@ -11,7 +11,7 @@ SBR-Theme für Websites der SBR-Gremien Post Postbank Telekom
 == Changelog ==
 Version 2.6.9
 1. Fehler im Code zur Integration von Plugin "HappyForms Tools" beseitigt
-2. Check, ob Plugin "WP H-HappyForms" aktiv ist
+2. Check, ob Plugin "WP H-HappyForms Tools" aktiv ist
 
 Version 2.6.8
 1. Code zur Integration von Plugin "HappyForms" verbessert
