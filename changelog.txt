@@ -1,6 +1,6 @@
 === SBR-Theme ===
 Requires at least: 4.0
-Tested up to: 5.7
+Tested up to: 5.7.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -9,9 +9,12 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 SBR-Theme für Websites der SBR-Gremien Post Postbank Telekom
 
 == Changelog ==
+Version 2.7
+1. Code zur Integration von Plugin "HappyForms" verbessert
+
 Version 2.6.9
-1. Fehler im Code zur Integration von Plugin "HappyForms Tools" beseitigt
-2. Check, ob Plugin "WP H-HappyForms Tools" aktiv ist
+1. Fehler im Code zur Integration von Plugin "HappyForms" beseitigt
+2. Check, ob Plugin "WP H-HappyForms" aktiv ist
 
 Version 2.6.8
 1. Code zur Integration von Plugin "HappyForms" verbessert
