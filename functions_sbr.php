@@ -165,26 +165,41 @@ return array(
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// Allow HTML-Code for HappyForms at multi selection fields
+// Erlaubt HTML-Code für HappyForms in Mehrfachauswahl-Feldern
 if (!function_exists('is_plugin_active')) {
     require_once ABSPATH . '/wp-admin/includes/plugin.php';
 }
+// Ist Plugin WP H-HappyForms inaktiv? Dann folgenden Code ausfuehren
+if (is_plugin_inactive('wp-h-happyforms-tools/wphhft.php')) {
 // Ist Plugin HappyForms aktiv?
 if (is_plugin_active('happyforms/happyforms.php')) {  // Plugin HappyForms ist aktiv
-//  Change Strings in frontend-checkbox.php row (Zeile) 34
+// Ersetzt String in der Datei frontend-checkbox.php Zeile 34 (Plugin HappyForms)
     $wphhft_string_orig = "<?php echo esc_attr( \$option['label'] ); ?>";
     $wphhft_string_new = "<?php echo html_entity_decode( \$option['label'] ); ?>";
     $wphhft_path_to_file = ABSPATH . 'wp-content/plugins/happyforms/core/templates/parts/frontend-checkbox.php';
     $wphhft_file_contents = file_get_contents($wphhft_path_to_file); // Inhalt frontend-checkbox.php einlesen
 if(strpos($wphhft_file_contents, $wphhft_string_orig) !== false) { // Original-String vorhanden?
     $wphhft_file_contents = str_replace($wphhft_string_orig, $wphhft_string_new, $wphhft_file_contents);
-    file_put_contents($wphhft_path_to_file, $wphhft_file_contents); // String ersetzen
+    file_put_contents($wphhft_path_to_file, $wphhft_file_contents); // Replace strings
     add_filter('happyforms_part_frontend_template_path_checkbox', function ($wphhft_template) {
         $wphhft_template = ABSPATH . 'wp-content/plugins/happyforms/core/templates/parts/frontend-checkbox.php';
         return $wphhft_template;
     });
 }
 }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// Verbesserung Bestätigungs-E-Mail (Block der Zustimmung wird ausgeblendet)
+// Der Inhalt der Variable "$label" muss exakt dem Text im Formular entsprechen; bei Bedarf in Zeile 196 anpassen.
+add_filter( 'happyforms_email_part_visible', function( $visible, $part, $form ) {
+    $label = 'Das Formular kann nur mit der Zustimmung zur Datenschutzerklärung gesendet werden*';
+    if ( isset( $part['label'] ) && $label === $part['label'] ) {
+        $visible = false;
+    }
+
+    return $visible;
+}, 10, 3 );
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // Beiträge in Seiten einfügen
