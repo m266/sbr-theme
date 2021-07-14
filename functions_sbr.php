@@ -165,15 +165,15 @@ return array(
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// Erlaubt HTML-Code für HappyForms in Mehrfachauswahl-Feldern
+// Erlaubt HTML-Code für Happyforms in Mehrfachauswahl-Feldern
 if (!function_exists('is_plugin_active')) {
     require_once ABSPATH . '/wp-admin/includes/plugin.php';
 }
-// Ist Plugin WP H-HappyForms inaktiv? Dann folgenden Code ausfuehren
+// Ist Plugin WP H-Happyforms inaktiv? Dann folgenden Code ausfuehren
 if (is_plugin_inactive('wp-h-happyforms-tools/wphhft.php')) {
-// Ist Plugin HappyForms aktiv?
-if (is_plugin_active('happyforms/happyforms.php')) {  // Plugin HappyForms ist aktiv
-// Ersetzt String in der Datei frontend-checkbox.php Zeile 34 (Plugin HappyForms)
+// Ist Plugin Happyforms aktiv?
+if (is_plugin_active('happyforms/happyforms.php')) {  // Plugin Happyforms ist aktiv
+// Ersetzt String in der Datei frontend-checkbox.php Zeile 34 (Plugin Happyforms)
     $wphhft_string_orig = "<?php echo esc_attr( \$option['label'] ); ?>";
     $wphhft_string_new = "<?php echo html_entity_decode( \$option['label'] ); ?>";
     $wphhft_path_to_file = ABSPATH . 'wp-content/plugins/happyforms/core/templates/parts/frontend-checkbox.php';
@@ -199,6 +199,43 @@ add_filter( 'happyforms_email_part_visible', function( $visible, $part, $form ) 
     }
 
     return $visible;
+}, 10, 3 );
+
+//////////////////////////////////////////////////////////////////////////////////////////
+/*
+Feld "Nachricht" wird mit Kommentar-Blacklist abgeglichen
+Credits/Special thanks: Ignazio Setti https://thethemefoundry.com/
+*/
+add_filter( 'happyforms_validate_submission', function( $is_valid, $request, $form ) {
+    $mod_keys = trim( get_option( 'disallowed_keys' ) );
+
+    if ( '' === $mod_keys ) {
+        return $is_valid;
+    }
+
+    foreach( $form['parts'] as $part ) {
+        if ( $part['type'] === 'multi_line_text' ) {
+            $part_name = happyforms_get_part_name( $part, $form );
+            $part_value = $request[$part_name];
+
+            foreach ( explode( "\n", $mod_keys ) as $word ) {
+                $word = trim( $word );
+                $length = strlen( $word );
+
+                if ( $length < 2 or 256 < $length ) {
+                    continue;
+                }
+
+                $pattern = sprintf( '#%s#i', preg_quote( $word, '#' ) );
+
+                if ( preg_match( $pattern, $part_value ) ) {
+                    $is_valid = false;
+                }
+            }
+        }
+    }
+
+    return $is_valid;
 }, 10, 3 );
 
 //////////////////////////////////////////////////////////////////////////////////////////

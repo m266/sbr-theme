@@ -9,6 +9,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 SBR-Theme für Websites der SBR-Gremien Post Postbank Telekom
 
 == Changelog ==
+Version 2.7.3
+1. Feld "Nachricht" (Plugin Happyforms) wird mit Kommentar-Blacklist abgeglichen
+
+Feld "Nachricht" wird mit Kommentar-Blacklist abgeglichen
 Version 2.7.2
 1. Update Seitentemplate (Auf erste Unterseite weiterleiten)
 
