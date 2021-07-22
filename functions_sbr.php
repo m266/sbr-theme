@@ -269,4 +269,11 @@ function shortcode_posts_function(){
     return $content;
 }
 add_shortcode('posts', 'shortcode_posts_function');
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// Restoring the classic Widgets Editor
+function cancel_theme_support() {
+    remove_theme_support( 'widgets-block-editor' );
+}
+add_action( 'after_setup_theme', 'cancel_theme_support' );
 ?>

@@ -1,6 +1,6 @@
 === SBR-Theme ===
 Requires at least: 4.0
-Tested up to: 5.7.2
+Tested up to: 5.8
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -9,6 +9,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 SBR-Theme für Websites der SBR-Gremien Post Postbank Telekom
 
 == Changelog ==
+Version 2.7.4
+1. Blockeditor (ab WP 5.8) für Widgets in functions_sbr.php abgeschaltet
+
 Version 2.7.3
 1. Feld "Nachricht" (Plugin Happyforms) wird mit Kommentar-Blacklist abgeglichen
 
