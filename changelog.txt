@@ -9,6 +9,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 SBR-Theme für Websites der SBR-Gremien Post Postbank Telekom
 
 == Changelog ==
+Version 2.7.5
+1. Funktion zum Einfügen externer Seiten neu programmiert
+
 Version 2.7.4
 1. Blockeditor (ab WP 5.8) für Widgets in functions_sbr.php abgeschaltet
 
