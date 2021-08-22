@@ -184,7 +184,7 @@ function shortcode_posts_function(){
     //Inhalte sammeln
     $content = '<div class="posts">';
     $content .= '<hr>
-    <h1 class="page-title">Letzte &Auml;nderungen:</h1>';
+    <h3 class="page-title">Letzte &Auml;nderungen:</h3>';
     foreach ($posts as $post) {
         $content .= '<div class="post">';
         $content .= '<b><a href="'.get_permalink($post->ID).'"><div class="title">'.$post->post_title.'</div></b></a>';

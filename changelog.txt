@@ -9,6 +9,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 SBR-Theme für Websites der SBR-Gremien Post Postbank Telekom
 
 == Changelog ==
+Version 2.7.6
+1. Titel "Letzte Änderungen" in H3 geändert
+
 Version 2.7.5
 1. Funktion zum Einfügen externer Seiten neu programmiert
 
