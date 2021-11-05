@@ -101,63 +101,63 @@ if (!function_exists('is_plugin_active')) {
 // Ist Plugin WP H-Happyforms inaktiv? Dann folgenden Code ausfuehren
 if (is_plugin_inactive('wp-h-happyforms-tools/wphhft.php')) {
 // Ist Plugin Happyforms aktiv?
-if (is_plugin_active('happyforms/happyforms.php')) {  // Plugin Happyforms ist aktiv
+    if (is_plugin_active('happyforms/happyforms.php')) { // Plugin Happyforms ist aktiv
 // Ersetzt String in der Datei frontend-checkbox.php Zeile 34 (Plugin Happyforms)
-    $wphhft_string_orig = "<?php echo esc_attr( \$option['label'] ); ?>";
-    $wphhft_string_new = "<?php echo html_entity_decode( \$option['label'] ); ?>";
-    $wphhft_path_to_file = ABSPATH . 'wp-content/plugins/happyforms/core/templates/parts/frontend-checkbox.php';
-    $wphhft_file_contents = file_get_contents($wphhft_path_to_file); // Inhalt frontend-checkbox.php einlesen
-if(strpos($wphhft_file_contents, $wphhft_string_orig) !== false) { // Original-String vorhanden?
-    $wphhft_file_contents = str_replace($wphhft_string_orig, $wphhft_string_new, $wphhft_file_contents);
-    file_put_contents($wphhft_path_to_file, $wphhft_file_contents); // Replace strings
-    add_filter('happyforms_part_frontend_template_path_checkbox', function ($wphhft_template) {
-        $wphhft_template = ABSPATH . 'wp-content/plugins/happyforms/core/templates/parts/frontend-checkbox.php';
-        return $wphhft_template;
-    });
-}
-}
+        $wphhft_string_orig = "<?php echo esc_attr( \$option['label'] ); ?>";
+        $wphhft_string_new = "<?php echo html_entity_decode( \$option['label'] ); ?>";
+        $wphhft_path_to_file = ABSPATH . 'wp-content/plugins/happyforms/core/templates/parts/frontend-checkbox.php';
+        $wphhft_file_contents = file_get_contents($wphhft_path_to_file); // Inhalt frontend-checkbox.php einlesen
+        if (strpos($wphhft_file_contents, $wphhft_string_orig) !== false) { // Original-String vorhanden?
+            $wphhft_file_contents = str_replace($wphhft_string_orig, $wphhft_string_new, $wphhft_file_contents);
+            file_put_contents($wphhft_path_to_file, $wphhft_file_contents); // Replace strings
+            add_filter('happyforms_part_frontend_template_path_checkbox', function ($wphhft_template) {
+                $wphhft_template = ABSPATH . 'wp-content/plugins/happyforms/core/templates/parts/frontend-checkbox.php';
+                return $wphhft_template;
+            });
+        }
+    }
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// Verbesserung Bestätigungs-E-Mail (Block der Zustimmung wird ausgeblendet)
+// Verbesserung Bestätigungs-E-Mail von Happyforms (Block der Zustimmung wird ausgeblendet)
 // Der Inhalt der Variable "$label" muss exakt dem Text im Formular entsprechen; bei Bedarf in Zeile 196 anpassen.
-add_filter( 'happyforms_email_part_visible', function( $visible, $part, $form ) {
+add_filter('happyforms_email_part_visible', function ($visible, $part, $form) {
     $label = 'Das Formular kann nur mit der Zustimmung zur Datenschutzerklärung gesendet werden*';
-    if ( isset( $part['label'] ) && $label === $part['label'] ) {
+    if (isset($part['label']) && $label === $part['label']) {
         $visible = false;
     }
 
     return $visible;
-}, 10, 3 );
+}, 10, 3);
 
 //////////////////////////////////////////////////////////////////////////////////////////
 /*
-Feld "Nachricht" wird mit Kommentar-Blacklist abgeglichen
+Feld "Nachricht" von Happyforms wird mit Kommentar-Blacklist abgeglichen
 Credits/Special thanks: Ignazio Setti https://thethemefoundry.com/
-*/
-add_filter( 'happyforms_validate_submission', function( $is_valid, $request, $form ) {
-    $mod_keys = trim( get_option( 'disallowed_keys' ) );
+ */
+add_filter('happyforms_validate_submission', function ($is_valid, $request, $form) {
+    $mod_keys = trim(get_option('disallowed_keys'));
 
-    if ( '' === $mod_keys ) {
+    if ('' === $mod_keys) {
         return $is_valid;
     }
 
-    foreach( $form['parts'] as $part ) {
-        if ( $part['type'] === 'multi_line_text' ) {
-            $part_name = happyforms_get_part_name( $part, $form );
+    foreach ($form['parts'] as $part) {
+        if ($part['type'] === 'multi_line_text') {
+            $part_name = happyforms_get_part_name($part, $form);
             $part_value = $request[$part_name];
 
-            foreach ( explode( "\n", $mod_keys ) as $word ) {
-                $word = trim( $word );
-                $length = strlen( $word );
+            foreach (explode("\n", $mod_keys) as $word) {
+                $word = trim($word);
+                $length = strlen($word);
 
-                if ( $length < 2 or 256 < $length ) {
+                if ($length < 2 or 256 < $length) {
                     continue;
                 }
 
-                $pattern = sprintf( '#%s#i', preg_quote( $word, '#' ) );
+                $pattern = sprintf('#%s#i', preg_quote($word, '#'));
 
-                if ( preg_match( $pattern, $part_value ) ) {
+                if (preg_match($pattern, $part_value)) {
                     $is_valid = false;
                 }
             }
@@ -165,7 +165,18 @@ add_filter( 'happyforms_validate_submission', function( $is_valid, $request, $fo
     }
 
     return $is_valid;
-}, 10, 3 );
+}, 10, 3);
+
+//////////////////////////////////////////////////////////////////////////////////////////
+/*
+Happyforms-Formulare exportieren
+Credits/Special thanks: Ignazio Setti https://thethemefoundry.com/
+*/
+add_filter( 'happyforms_happyform_post_type_args', function( $args ) {
+    $args['can_export'] = true;
+
+    return $args;
+} );
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // Beiträge in Seiten einfügen
